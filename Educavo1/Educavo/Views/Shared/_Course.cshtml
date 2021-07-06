@@ -1,0 +1,55 @@
+﻿@model List<Course>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@foreach (var item in Model)
+{
+    <div class="col-lg-4 col-md-6 mb-30">
+        <div class="courses-item">
+            <div class="courses-grid">
+                <div class="img-part">
+                    <a href="#"><img src="~/assets/images/courses/main-home/1.jpg" alt=""></a>
+                </div>
+                <div class="content-part">
+                    <div class="info-meta">
+                        <ul>
+                            <li class="ratings">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                (1 rating)
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="course-price">
+                        <span class="price">Free</span>
+                    </div>
+                    <h3 class="title"><a asp-controller="course" asp-action="details" asp-route-CourseId="@item.Id">@item.Title</a></h3>
+                    <ul class="meta-part">
+                        <li class="user">
+                            <i class="fa fa-user"></i>
+                            @item.StudentCount Students
+                        </li>
+                        <li class="user">
+                            <i class="fa fa-file"></i>
+                            @{
+                                int j = 0;
+
+                                foreach (var item2 in item.Curriculum.curriculumCategories)
+                                {
+                                    j += item2.CurriculumSubjects.Count;
+                                }
+                            }
+
+                            @j Lessons
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+}

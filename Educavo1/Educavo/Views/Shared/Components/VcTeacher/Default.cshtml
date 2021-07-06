@@ -1,0 +1,24 @@
+﻿@model List<Team>
+@{
+    Layout = null;
+}
+
+@foreach (var item in Model)
+{
+    <div class="col-lg-4 col-sm-6 mb-30">
+        <div class="team-item">
+            <img src="~/assets/images/team/1.jpg" alt="">
+            <div class="content-part">
+                <h4 class="name"><a href="team-single.html">@item.FullName</a></h4>
+                <span class="designation">@item.Position.Name</span>
+                <ul class="social-links">
+                    @foreach (var item2 in item.SocialToTeams)
+                    {
+                        <li><a href="#" title="@item2.Social.Name"><i class="@item2.Social.Icon"></i></a></li>
+
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+}
